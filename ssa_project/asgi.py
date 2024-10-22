@@ -14,3 +14,4 @@ from django.core.asgi import get_asgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ssa_project.settings')
 
 application = get_asgi_application()
+#ytping this really shouldnt be that hard but it is and i dont know why please send help
