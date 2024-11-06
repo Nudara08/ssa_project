@@ -26,12 +26,23 @@ RECAPTCHA_SECRET_KEY = "6LeMRm4qAAAAAPslEmmSL7zQBpwLV-YHw0R99ytB"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost'] #127.0.0.1 is the local host
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
+EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+ANYMAIL = {
+    "MAILGUN_API_KEY": "your_mailgun_api_key",
+    "MAILGUN_SENDER_DOMAIN": "your_domain", 
+}
 
-# Application definition
+DEFAULT_FROM_EMAIL = "your_default_email_address"
+EMAIL_HOST = "smtp.mailgun.org"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "postmaster@your_domain"
+EMAIL_HOST_PASSWORD = "your_mailgun_SMTP_password"
 
 INSTALLED_APPS = [
+
     'users',
     'chipin',
     'django.contrib.admin',
@@ -72,6 +83,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'chipin.context_processors.user_profile',
             ],
         },
     },
